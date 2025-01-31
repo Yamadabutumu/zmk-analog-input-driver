@@ -12,7 +12,6 @@
 #include <zmk/keymap.h>
 #include <stdlib.h> //for abs()
 #include <zephyr/sys/util.h> // for CLAMP
-#include <input.h>
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
