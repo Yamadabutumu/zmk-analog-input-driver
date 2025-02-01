@@ -79,7 +79,7 @@ struct input_event {
  */
 int input_report(const struct device *dev,
 		 uint8_t type, uint16_t code, int32_t value, bool sync,
-		 k_timeout_t timeout);
+		 k_timeout_t timeout){};
 
 /**
  * @brief Report a new @ref INPUT_EV_KEY input event, note that value is
