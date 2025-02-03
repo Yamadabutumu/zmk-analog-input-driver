@@ -216,12 +216,11 @@ static int analog_input_report_data(const struct device *dev) {
         int32_t mv = raw;
         adc_raw_to_millivolts(adc_ref_internal(adc), ADC_GAIN_1_6, as->resolution, &mv);
 
-	if (raw < 20){
-		if (ch_cfg.adc_channel.channel_id == 0){
-            		zmk_hid_keyboard_press(&kp N0);  // アクション関数を呼び出す
-			//zmk_hid_keyboard_release(N0);
-			//zmk_hid_keyboard_clear();
-			k_msleep(50);
+
+	if (ch_cfg.adc_channel.channel_id == 0){
+	    if (raw < 20){
+		    input_report_key(dev, N0, 1, true, K_FOREVER);
+		    input_report_key(dev, N0, 0, true, K_FOREVER);
 		}
         }
 #if IS_ENABLED(CONFIG_ANALOG_INPUT_LOG_DBG_RAW)
