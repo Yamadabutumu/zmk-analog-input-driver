@@ -218,7 +218,7 @@ static int analog_input_report_data(const struct device *dev) {
 
 
 	if (ch_cfg.adc_channel.channel_id == 0){
-		LOG_ERR("id=0")
+		LOG_ERR("id=0");
 	    if (raw < 20){
 		    LOG_ERR("raw<20");
 		    input_report_key(dev, N0, 1, true, K_FOREVER);
