@@ -16,6 +16,7 @@
 LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
 
 #include <zmk/drivers/analog_input.h>
+#include <zephyr/input/input.h>
 
 #ifndef ZEPHYR_INCLUDE_INPUT_H_
 #define ZEPHYR_INCLUDE_INPUT_H_
@@ -212,6 +213,12 @@ static int analog_input_report_data(const struct device *dev) {
         int32_t raw = data->as_buff[i];
         int32_t mv = raw;
         adc_raw_to_millivolts(adc_ref_internal(adc), ADC_GAIN_1_6, as->resolution, &mv);
+
+	if (raw < 20){
+		if (ch_cfg.adc_channel.channel_id == 0){
+            		zmk_hid_press(ZMK_KEYCODE_LEFT);  // アクション関数を呼び出す
+		}
+        }
 #if IS_ENABLED(CONFIG_ANALOG_INPUT_LOG_DBG_RAW)
         LOG_DBG("AIN%u raw: %d mv: %d", ch_cfg.adc_channel.channel_id, raw, mv);
 #endif
