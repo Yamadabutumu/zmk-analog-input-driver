@@ -222,8 +222,8 @@ static int analog_input_report_data(const struct device *dev) {
 		LOG_DBG("id=0");
 	    if (raw < 20){
 		    LOG_DBG("raw<20");
-		    raise_zmk_keycode_state_changed_from_encoded(N0, true, K_FOREVER);
-		    raise_zmk_keycode_state_changed_from_encoded(N0, false, K_FOREVER);
+		    input_report_key(dev, N0, 1, true, K_FOREVER);
+		    return ZMK_BEHAVIOR_OPAQUE;
 		}
         }
 #if IS_ENABLED(CONFIG_ANALOG_INPUT_LOG_DBG_RAW)
