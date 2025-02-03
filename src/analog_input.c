@@ -219,9 +219,9 @@ static int analog_input_report_data(const struct device *dev) {
 
 
 	if (ch_cfg.adc_channel.channel_id == 0){
-		LOG_ERR("id=0");
+		LOG_DBG("id=0");
 	    if (raw < 20){
-		    LOG_ERR("raw<20");
+		    LOG_DBG("raw<20");
 		    raise_zmk_keycode_state_changed_from_encoded(N0, true, K_FOREVER);
 		    raise_zmk_keycode_state_changed_from_encoded(N0, false, K_FOREVER);
 		}
