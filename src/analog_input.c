@@ -19,6 +19,7 @@ LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
 //#include <zephyr/input/input.h>
 #include <zmk/hid.h>
 #include <zmk/keys.h>
+#include <zmk/events/keycode_state_changed.h>
 
 #ifndef ZEPHYR_INCLUDE_INPUT_H_
 #define ZEPHYR_INCLUDE_INPUT_H_
@@ -221,8 +222,8 @@ static int analog_input_report_data(const struct device *dev) {
 		LOG_ERR("id=0");
 	    if (raw < 20){
 		    LOG_ERR("raw<20");
-		    input_report_key(dev, N0, 1, true, K_FOREVER);
-		    input_report_key(dev, N0, 0, true, K_FOREVER);
+		    raise_zmk_keycode_state_changed_from_encoded(N0, true, event.timestamp);
+		    raise_zmk_keycode_state_changed_from_encoded(N0, false, event.timestamp);
 		}
         }
 #if IS_ENABLED(CONFIG_ANALOG_INPUT_LOG_DBG_RAW)
