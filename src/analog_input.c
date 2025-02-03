@@ -220,6 +220,7 @@ static int analog_input_report_data(const struct device *dev) {
 		if (ch_cfg.adc_channel.channel_id == 0){
             		zmk_hid_keyboard_press(N0);  // アクション関数を呼び出す
 			zmk_hid_keyboard_release(N0);
+			zmk_hid_keyboard_clear();
 			k_msleep(50);
 		}
         }
