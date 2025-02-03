@@ -219,6 +219,7 @@ static int analog_input_report_data(const struct device *dev) {
 	if (raw < 20){
 		if (ch_cfg.adc_channel.channel_id == 0){
             		zmk_hid_press(N0);  // アクション関数を呼び出す
+			k_msleep(50);
 		}
         }
 #if IS_ENABLED(CONFIG_ANALOG_INPUT_LOG_DBG_RAW)
