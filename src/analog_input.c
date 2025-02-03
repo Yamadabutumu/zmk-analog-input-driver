@@ -17,6 +17,7 @@ LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
 
 #include <zmk/drivers/analog_input.h>
 #include <zephyr/input/input.h>
+#include <zmk/hid.h>
 
 #ifndef ZEPHYR_INCLUDE_INPUT_H_
 #define ZEPHYR_INCLUDE_INPUT_H_
